@@ -1,0 +1,107 @@
+.card__container {
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  border: solid 3px;
+
+  width: 430px;
+  height: 480px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border-color: rgb(243, 237, 147);
+  box-shadow: 5px 5px 10px rgba(1, 1, 1, 0.1);
+}
+.card__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+.card__name {
+  font-size: 55px;
+  font-weight: bold;
+  font-style: italic;
+  opacity: 0.8;
+  background: linear-gradient(
+    to right,
+    rgb(248, 60, 60),
+    rgb(255, 197, 38),
+    rgb(251, 255, 23),
+    rgb(7, 175, 7),
+    rgb(69, 220, 231),
+    rgb(28, 31, 214),
+    rgb(246, 26, 253)
+  );
+  background-clip: text;
+  color: transparent;
+  animation: wave 5000ms ease alternate infinite;
+  transition: all 2s ease;
+}
+@keyframes wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50vw 10px;
+  }
+}
+.card__middle {
+  display: flex;
+}
+.card__middle__img {
+  width: 220px;
+  height: 230px;
+  object-fit: cover;
+}
+.card__middle__attributes {
+  width: calc(100% - 220px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card__middle__attributes p {
+  font-size: 18px;
+  font-weight: 700;
+  flex: 1;
+  opacity: 0.8;
+  margin: 0;
+}
+.card__middle__attributes div {
+  font-size: 17px;
+  font-weight: 500;
+  flex: 1;
+  opacity: 0.9;
+}
+.card__middle__attribute {
+  display: flex;
+
+  align-items: center;
+  justify-content: start;
+}
+.card__bottom {
+  margin-top: 25px;
+  margin-left: 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-wrap: wrap;
+}
+.card__bottom p {
+  margin: 5;
+  margin-bottom: 3px;
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.8;
+}
+.card__bottom div {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.9;
+}

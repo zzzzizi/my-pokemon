@@ -1,0 +1,14 @@
+.home__top {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.home__bottom {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 15px;
+  line-height: 50px;
+}
