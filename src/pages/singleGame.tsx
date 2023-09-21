@@ -5,8 +5,8 @@ import { getCards } from '../features/playerOneSlice';
 import { PlayerOneCards } from '../components/playerCards';
 import { getComputerCards } from '../features/computerSlice';
 import './singleGame.css';
+import { Vs } from '../components/vs';
 import { pk } from '../features/gameSlice';
-
 export const SingleGame = () => {
   const dispatch = useDispatch();
   const palyerOne = useSelector((state: RootState) => state.playerOne);
@@ -22,6 +22,23 @@ export const SingleGame = () => {
   );
   const leftImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${leftChooseCard}.png`;
   const rightImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${rightChooseCard}.png`;
+
+  let isPlayerOneFailed = false;
+  if (
+    playerOneHp.cardOne.hp === 0 &&
+    playerOneHp.cardTwo.hp === 0 &&
+    playerOneHp.cardThree.hp === 0
+  ) {
+    isPlayerOneFailed = true;
+  }
+  let isComputerFailed = false;
+  if (
+    computerHp.cardOne.hp === 0 &&
+    computerHp.cardTwo.hp === 0 &&
+    computerHp.cardThree.hp === 0
+  ) {
+    isComputerFailed = true;
+  }
 
   return (
     <div className="singleGame">
@@ -50,25 +67,35 @@ export const SingleGame = () => {
       {isGetCard && (
         <div className="singleGame__middle">
           <div>
-            <PlayerOneCards cards={palyerOne} hp={playerOneHp} side={'left'} />
-          </div>
-          <div className="singleGame__middle__pk">
-            <div className="singleGame__middle__pk__left">
-              <img src={leftImg} alt="leftChosenCard" />
-            </div>
-            <div
-              className="singleGame__middle__pk__VS"
-              onClick={() => dispatch(pk())}
-            >
-              VS
-            </div>
             <div>
-              <img src={rightImg} alt="rightChosenCard" />
+              {isComputerFailed && (
+                <div className="singleGame__middle__pk__win">You Win</div>
+              )}
+              {isPlayerOneFailed && (
+                <div className="singleGame__middle__pk__failed">You Failed</div>
+              )}
+            </div>
+            <div className="singleGame__middle__pk__pokemon">
+              <PlayerOneCards
+                cards={palyerOne}
+                hp={playerOneHp}
+                side={'left'}
+              />
             </div>
           </div>
-
+          <Vs />
           <div>
-            <PlayerOneCards cards={computer} hp={computerHp} side={'right'} />
+            <div>
+              {isPlayerOneFailed && (
+                <div className="singleGame__middle__pk__win">You Win</div>
+              )}
+              {isComputerFailed && (
+                <div className="singleGame__middle__pk__failed">You Failed</div>
+              )}
+            </div>
+            <div className="singleGame__middle__pk__pokemon">
+              <PlayerOneCards cards={computer} hp={computerHp} side={'right'} />
+            </div>
           </div>
         </div>
       )}

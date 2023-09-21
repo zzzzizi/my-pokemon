@@ -19,7 +19,9 @@
   border-color: rgb(243, 237, 147);
   box-shadow: 5px 5px 10px rgba(1, 1, 1, 0.1);
 }
-
+.player__card:hover {
+  cursor: pointer;
+}
 .player__card__top {
   display: flex;
   align-items: center;

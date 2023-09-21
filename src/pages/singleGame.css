@@ -43,20 +43,70 @@
 }
 .singleGame__middle__pk {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.singleGame__middle__pk__top {
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 60px;
 }
 @media screen and (max-width: 1342px) {
-  .singleGame__middle__pk {
+  .singleGame__middle__pk__top {
     flex-direction: column;
+  }
+}
+.singleGame__middle__pk__defense {
+  color: green;
+  position: absolute;
+  animation: number 2s linear infinite,
+    sideWays 2s ease-in-out infinite alternate, number-appear 2s linear infinite;
+}
+.singleGame__middle__pk__attack {
+  color: red;
+  position: absolute;
+
+  animation: number 1.6s linear infinite,
+    sideWays 1.5s ease-in-out infinite alternate,
+    number-appear 1.6s linear infinite;
+}
+@keyframes number-appear {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sideWays {
+  0% {
+    margin-left: 60px;
+  }
+  100% {
+    margin-left: 80px;
+  }
+}
+
+@keyframes number {
+  0% {
+    margin-top: 40px;
+  }
+  100% {
+    margin-top: -20px;
   }
 }
 
 .singleGame__middle__pk img {
+  position: relative;
   width: 150px;
 }
-.singleGame__middle__pk__left {
+.singleGame__middle__pk__left__img {
   transform: scaleX(-1);
 }
 .singleGame__middle__pk__VS {
@@ -76,4 +126,39 @@
   );
   color: transparent;
   background-clip: text;
+}
+.singleGame__middle__pk__pokemon {
+  position: relative;
+  z-index: 19;
+}
+.singleGame__middle__pk__failed {
+  position: absolute;
+  font-size: 80px;
+  color: red;
+  border: solid red 2px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 300px;
+  transform: rotate(-25deg);
+  z-index: 20;
+}
+.singleGame__middle__pk__win {
+  position: absolute;
+  font-size: 80px;
+  color: green;
+  border: solid green 2px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 300px;
+  transform: rotate(-25deg);
+  z-index: 20;
+}
+.pk__bottom__btn {
+  width: 100px;
+  margin-bottom: 30px;
+  border: solid gray 1px;
+  background-color: white;
+}
+.pk__bottom__btn:hover {
+  cursor: pointer;
 }

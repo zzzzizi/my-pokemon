@@ -26,7 +26,7 @@ export type Hp = {
 export type GameState = {
   left: Hp;
   right: Hp;
-  isGameOver: boolean;
+  isNewRound: boolean;
   winner?: string;
 };
 
@@ -69,7 +69,7 @@ const initialState: GameState = {
     chosen: 'cardOne',
     chosenId: 0,
   },
-  isGameOver: false,
+  isNewRound: true,
   winner: '',
 };
 
@@ -97,8 +97,7 @@ export const gameSlice = createSlice({
             (Math.random() * 0.5 + 0.5)
         );
         state[action.payload.side][action.payload.card].defense = Math.floor(
-          action.payload.pokemon.stats[2].base_stat *
-            (Math.random() * 0.5 + 0.5)
+          action.payload.pokemon.stats[2].base_stat * Math.random()
         );
       }
       state[action.payload.side].chosen = action.payload.card;
@@ -124,6 +123,7 @@ export const gameSlice = createSlice({
       ) {
         state.right[rightChoose].hp = 0;
       } else {
+        state.right[rightChoose].defense = leftAttact;
         state.right[rightChoose].hp = state.right[rightChoose].hp + 0;
       }
 
@@ -139,8 +139,15 @@ export const gameSlice = createSlice({
       ) {
         state.left[leftChoose].hp = 0;
       } else {
+        state.left[leftChoose].defense = rightAttact;
         state.left[leftChoose].hp = state.left[leftChoose].hp + 0;
       }
+      state.isNewRound = false;
+    },
+    nextRound: (state: GameState) => {
+      state.left.chosenId = 0;
+      state.right.chosenId = 0;
+      state.isNewRound = true;
     },
     deleteGame: (state: GameState) => {
       return initialState;
@@ -148,7 +155,7 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { pushHp, choose, pk, deleteGame } = gameSlice.actions;
+export const { pushHp, choose, pk, deleteGame, nextRound } = gameSlice.actions;
 
 export type PushHpAction = ReturnType<typeof pushHp>;
 export type DeleteGameAction = ReturnType<typeof deleteGame>;

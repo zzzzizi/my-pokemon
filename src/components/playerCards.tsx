@@ -3,8 +3,10 @@ import './playerCards.css';
 import { PlayerState } from '../features/playerOneSlice';
 import { choose } from '../features/gameSlice';
 import { Hp } from '../features/gameSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Side } from '../features/gameSlice';
+
+import { RootState } from '../features/fetchDataSlice';
 
 export const PlayerOneCards = ({
   cards,
@@ -16,6 +18,7 @@ export const PlayerOneCards = ({
   side: Side;
 }) => {
   const dispatch = useDispatch();
+  const isNewRound = useSelector((state: RootState) => state.game.isNewRound);
   let cardOnePercentage: number = 0;
   let cardTwoPercentage: number = 0;
   let cardThreePercentage: number = 0;
@@ -27,17 +30,19 @@ export const PlayerOneCards = ({
 
   return (
     <div>
-      <div>
+      <div style={{ filter: hp.cardOne.hp === 0 ? 'grayscale(0.8)' : '' }}>
         <div
-          onClick={() =>
-            dispatch(
-              choose({
-                side: side,
-                card: 'cardOne',
-                pokemon: cards.cardOne.pokemon,
-              })
-            )
-          }
+          onClick={() => {
+            isNewRound &&
+              hp.cardOne.hp !== 0 &&
+              dispatch(
+                choose({
+                  side: side,
+                  card: 'cardOne',
+                  pokemon: cards.cardOne.pokemon,
+                })
+              );
+          }}
         >
           <ShowCard
             pokemonData={cards.cardOne.pokemon}
@@ -58,17 +63,19 @@ export const PlayerOneCards = ({
           </div>
         </div>
       </div>
-      <div>
+      <div style={{ filter: hp.cardTwo.hp === 0 ? 'grayscale(0.8)' : '' }}>
         <div
-          onClick={() =>
-            dispatch(
-              choose({
-                side: side,
-                card: 'cardTwo',
-                pokemon: cards.cardTwo.pokemon,
-              })
-            )
-          }
+          onClick={() => {
+            isNewRound &&
+              hp.cardTwo.hp !== 0 &&
+              dispatch(
+                choose({
+                  side: side,
+                  card: 'cardTwo',
+                  pokemon: cards.cardTwo.pokemon,
+                })
+              );
+          }}
         >
           <ShowCard
             showCardStyle="player__"
@@ -90,17 +97,19 @@ export const PlayerOneCards = ({
           </div>
         </div>
       </div>
-      <div>
+      <div style={{ filter: hp.cardThree.hp === 0 ? 'grayscale(0.8)' : '' }}>
         <div
-          onClick={() =>
-            dispatch(
-              choose({
-                side: side,
-                card: 'cardThree',
-                pokemon: cards.cardThree.pokemon,
-              })
-            )
-          }
+          onClick={() => {
+            isNewRound &&
+              hp.cardThree.hp !== 0 &&
+              dispatch(
+                choose({
+                  side: side,
+                  card: 'cardThree',
+                  pokemon: cards.cardThree.pokemon,
+                })
+              );
+          }}
         >
           <ShowCard
             showCardStyle="player__"
