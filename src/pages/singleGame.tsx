@@ -6,9 +6,12 @@ import { PlayerOneCards } from '../components/playerCards';
 import { getComputerCards } from '../features/computerSlice';
 import './singleGame.css';
 import { Vs } from '../components/vs';
-import { pk } from '../features/gameSlice';
+import { isSinglePlayer } from '../features/gameSlice';
 export const SingleGame = () => {
   const dispatch = useDispatch();
+  const singlePlayer = useSelector(
+    (state: RootState) => state.game.singlePlayer
+  );
   const palyerOne = useSelector((state: RootState) => state.playerOne);
   const computer = useSelector((state: RootState) => state.computer);
   const playerOneHp = useSelector((state: RootState) => state.game.left);
@@ -55,10 +58,29 @@ export const SingleGame = () => {
                 dispatch(getComputerCards('cardOne'));
                 dispatch(getComputerCards('cardTwo'));
                 dispatch(getComputerCards('cardThree'));
+                dispatch(isSinglePlayer(true));
                 setIsGetCard(true);
               }}
             >
-              Get your cards
+              Single Player
+            </button>
+          </div>
+
+          <div>
+            <button
+              className="singleGame__top__btn"
+              onClick={() => {
+                dispatch(getCards('cardOne'));
+                dispatch(getCards('cardTwo'));
+                dispatch(getCards('cardThree'));
+                dispatch(getComputerCards('cardOne'));
+                dispatch(getComputerCards('cardTwo'));
+                dispatch(getComputerCards('cardThree'));
+                dispatch(isSinglePlayer(false));
+                setIsGetCard(true);
+              }}
+            >
+              Double Players
             </button>
           </div>
         </div>
@@ -66,7 +88,7 @@ export const SingleGame = () => {
 
       {isGetCard && (
         <div className="singleGame__middle">
-          <div>
+          <div className="singleGame__middle__container">
             <div>
               {isComputerFailed && (
                 <div className="singleGame__middle__pk__win">You Win</div>
@@ -80,11 +102,12 @@ export const SingleGame = () => {
                 cards={palyerOne}
                 hp={playerOneHp}
                 side={'left'}
+                isComputer={false}
               />
             </div>
           </div>
           <Vs />
-          <div>
+          <div className="singleGame__middle__container">
             <div>
               {isPlayerOneFailed && (
                 <div className="singleGame__middle__pk__win">You Win</div>
@@ -94,7 +117,12 @@ export const SingleGame = () => {
               )}
             </div>
             <div className="singleGame__middle__pk__pokemon">
-              <PlayerOneCards cards={computer} hp={computerHp} side={'right'} />
+              <PlayerOneCards
+                cards={computer}
+                hp={computerHp}
+                side={'right'}
+                isComputer={singlePlayer}
+              />
             </div>
           </div>
         </div>

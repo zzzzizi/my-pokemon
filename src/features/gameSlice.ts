@@ -28,6 +28,7 @@ export type GameState = {
   right: Hp;
   isNewRound: boolean;
   winner?: string;
+  singlePlayer: boolean;
 };
 
 const initialState: GameState = {
@@ -71,6 +72,7 @@ const initialState: GameState = {
   },
   isNewRound: true,
   winner: '',
+  singlePlayer: false,
 };
 
 export const gameSlice = createSlice({
@@ -78,6 +80,9 @@ export const gameSlice = createSlice({
   initialState,
 
   reducers: {
+    isSinglePlayer: (state: GameState, action: PayloadAction<boolean>) => {
+      state.singlePlayer = action.payload;
+    },
     pushHp: (
       state: GameState,
       action: PayloadAction<{ side: Side; card: Card; pokemon: Pokemon }>
@@ -155,7 +160,8 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { pushHp, choose, pk, deleteGame, nextRound } = gameSlice.actions;
+export const { isSinglePlayer, pushHp, choose, pk, deleteGame, nextRound } =
+  gameSlice.actions;
 
 export type PushHpAction = ReturnType<typeof pushHp>;
 export type DeleteGameAction = ReturnType<typeof deleteGame>;

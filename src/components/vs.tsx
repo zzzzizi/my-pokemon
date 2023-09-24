@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../features/fetchDataSlice';
-import { deleteGame, pk } from '../features/gameSlice';
-import { useState } from 'react';
+import { choose, deleteGame, pk, Card } from '../features/gameSlice';
+import { useState, useEffect } from 'react';
 import { nextRound } from '../features/gameSlice';
 import { getCards } from '../features/playerOneSlice';
 import { getComputerCards } from '../features/computerSlice';
@@ -9,7 +9,9 @@ import { getComputerCards } from '../features/computerSlice';
 export const Vs = () => {
   const dispatch = useDispatch();
   const [isVs, setIsVs] = useState(false);
+  const isComputer = useSelector((state: RootState) => state.game.singlePlayer);
   const isNewRound = useSelector((state: RootState) => state.game.isNewRound);
+  const computer = useSelector((state: RootState) => state.computer);
   const left = useSelector((state: RootState) => state.game.left);
   const right = useSelector((state: RootState) => state.game.right);
   const leftChoose = useSelector((state: RootState) => state.game.left.chosen);
@@ -24,6 +26,20 @@ export const Vs = () => {
   );
   const leftImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${leftChooseCard}.png`;
   const rightImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${rightChooseCard}.png`;
+
+  let chosenCard: Card = 'cardOne';
+  const handleClick = () => {
+    const cardNumber: Array<'cardOne' | 'cardTwo' | 'cardThree'> = [];
+    right.cardOne.hp > 0 && cardNumber.push('cardOne');
+    right.cardTwo.hp > 0 && cardNumber.push('cardTwo');
+    right.cardThree.hp > 0 && cardNumber.push('cardThree');
+    const randomNumber = Math.floor(Math.random() * cardNumber.length);
+    console.log(computer.cardOne.HP);
+    console.log(computer.cardThree.HP);
+    chosenCard = cardNumber[randomNumber];
+    console.log(cardNumber);
+    console.log(chosenCard);
+  };
 
   return (
     <div className="singleGame__middle__pk">
@@ -54,7 +70,7 @@ export const Vs = () => {
         <div
           className="singleGame__middle__pk__VS"
           onClick={() => {
-            if (isNewRound) {
+            if (isNewRound && leftChooseCard !== 0 && rightChooseCard !== 0) {
               dispatch(pk());
               setIsVs(true);
             }
@@ -87,8 +103,21 @@ export const Vs = () => {
       <button
         className="pk__bottom__btn"
         onClick={() => {
-          dispatch(nextRound());
-          setIsVs(false);
+          if (isComputer === false) {
+            dispatch(nextRound());
+            setIsVs(false);
+          } else {
+            handleClick();
+            dispatch(nextRound());
+            dispatch(
+              choose({
+                side: 'right',
+                card: chosenCard,
+                pokemon: computer[chosenCard].pokemon,
+              })
+            );
+            setIsVs(false);
+          }
         }}
       >
         Next Round

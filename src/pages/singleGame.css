@@ -89,7 +89,7 @@
     margin-left: 60px;
   }
   100% {
-    margin-left: 80px;
+    margin-left: 90px;
   }
 }
 
@@ -98,7 +98,7 @@
     margin-top: 40px;
   }
   100% {
-    margin-top: -20px;
+    margin-top: -50px;
   }
 }
 
@@ -127,7 +127,8 @@
   color: transparent;
   background-clip: text;
 }
-.singleGame__middle__pk__pokemon {
+
+.singleGame__middle__container {
   position: relative;
   z-index: 19;
 }

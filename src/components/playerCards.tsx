@@ -12,10 +12,12 @@ export const PlayerOneCards = ({
   cards,
   hp,
   side,
+  isComputer,
 }: {
   cards: PlayerState;
   hp: Hp;
   side: Side;
+  isComputer: boolean;
 }) => {
   const dispatch = useDispatch();
   const isNewRound = useSelector((state: RootState) => state.game.isNewRound);
@@ -34,6 +36,7 @@ export const PlayerOneCards = ({
         <div
           onClick={() => {
             isNewRound &&
+              !isComputer &&
               hp.cardOne.hp !== 0 &&
               dispatch(
                 choose({
@@ -67,6 +70,7 @@ export const PlayerOneCards = ({
         <div
           onClick={() => {
             isNewRound &&
+              !isComputer &&
               hp.cardTwo.hp !== 0 &&
               dispatch(
                 choose({
@@ -101,6 +105,7 @@ export const PlayerOneCards = ({
         <div
           onClick={() => {
             isNewRound &&
+              !isComputer &&
               hp.cardThree.hp !== 0 &&
               dispatch(
                 choose({
