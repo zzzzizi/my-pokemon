@@ -26,6 +26,8 @@ export const locationChangeEpic: Epic<RootAction, RootAction, RootState> = (
             'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0'
           )
         );
+      } else if (action.payload.pathname === '/singleGame/pokemonGame') {
+        return of(deleteSearchValue(), deleteAllData());
       } else if (action.payload.pathname !== '/searchResult') {
         return of(deleteSearchValue(), deleteAllData(), deleteGame());
       } else {

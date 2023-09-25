@@ -1,0 +1,35 @@
+.game {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  overflow: auto;
+
+  height: calc(100vh - 75px);
+}
+
+.game__cards {
+  position: relative;
+  z-index: 19;
+}
+.game__failed {
+  position: absolute;
+  font-size: 80px;
+  color: red;
+  border: solid red 2px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 300px;
+  transform: rotate(-25deg);
+  z-index: 20;
+}
+.game__win {
+  position: absolute;
+  font-size: 80px;
+  color: green;
+  border: solid green 2px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 300px;
+  transform: rotate(-25deg);
+  z-index: 20;
+}

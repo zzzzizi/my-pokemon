@@ -1,13 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../features/fetchDataSlice';
 import { choose, deleteGame, pk, Card } from '../features/gameSlice';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { nextRound } from '../features/gameSlice';
 import { getCards } from '../features/playerOneSlice';
 import { getComputerCards } from '../features/computerSlice';
+import './vs.css';
 
 export const Vs = () => {
   const dispatch = useDispatch();
+  const [isStart, setIsStart] = useState(false);
   const [isVs, setIsVs] = useState(false);
   const isComputer = useSelector((state: RootState) => state.game.singlePlayer);
   const isNewRound = useSelector((state: RootState) => state.game.isNewRound);
@@ -42,73 +44,12 @@ export const Vs = () => {
   };
 
   return (
-    <div className="singleGame__middle__pk">
-      <div className="singleGame__middle__pk__top">
-        <div className="singleGame__middle__pk__left">
-          <div>
-            {isVs && (
-              <div className="singleGame__middle__pk__defense">
-                +{left[leftChoose].defense}
-              </div>
-            )}
-          </div>
-          <div>
-            {isVs && (
-              <div className="singleGame__middle__pk__attack">
-                -{right[rightChoose].attack}
-              </div>
-            )}
-          </div>
-          <img
-            className={
-              leftChooseCard !== 0 ? 'singleGame__middle__pk__left__img' : ``
-            }
-            src={leftImg}
-            alt="leftChosenCard"
-          />
-        </div>
-        <div
-          className="singleGame__middle__pk__VS"
+    <div className="game__middle">
+      {!isStart ? (
+        <button
           onClick={() => {
-            if (isNewRound && leftChooseCard !== 0 && rightChooseCard !== 0) {
-              dispatch(pk());
-              setIsVs(true);
-            }
-          }}
-        >
-          VS
-        </div>
-        <div>
-          <div>
-            {isVs && (
-              <div className="singleGame__middle__pk__attack">
-                -{left[leftChoose].attack}
-              </div>
-            )}
-          </div>
-          <div>
-            {isVs && (
-              <div className="singleGame__middle__pk__defense">
-                +{right[rightChoose].defense}
-              </div>
-            )}
-          </div>
-          <img
-            className="singleGame__middle__pk__right__img"
-            src={rightImg}
-            alt="rightChosenCard"
-          />
-        </div>
-      </div>
-      <button
-        className="pk__bottom__btn"
-        onClick={() => {
-          if (isComputer === false) {
-            dispatch(nextRound());
-            setIsVs(false);
-          } else {
+            setIsStart(true);
             handleClick();
-            dispatch(nextRound());
             dispatch(
               choose({
                 side: 'right',
@@ -116,28 +57,107 @@ export const Vs = () => {
                 pokemon: computer[chosenCard].pokemon,
               })
             );
-            setIsVs(false);
-          }
-        }}
-      >
-        Next Round
-      </button>
-      <button
-        className="pk__bottom__btn"
-        onClick={() => {
-          dispatch(deleteGame());
-          dispatch(getCards('cardOne'));
-          dispatch(getCards('cardTwo'));
-          dispatch(getCards('cardThree'));
-          dispatch(getComputerCards('cardOne'));
-          dispatch(getComputerCards('cardTwo'));
-          dispatch(getComputerCards('cardThree'));
+          }}
+        >
+          Start
+        </button>
+      ) : (
+        <div className="game__vs">
+          <div className="game__vs__top">
+            <div>
+              <div>
+                {isVs && (
+                  <div className="game__vs__defense">
+                    +{left[leftChoose].defense}
+                  </div>
+                )}
+              </div>
+              <div>
+                {isVs && (
+                  <div className="game__vs__attack">
+                    -{right[rightChoose].attack}
+                  </div>
+                )}
+              </div>
+              <img
+                className={leftChooseCard !== 0 ? 'game__vs__left__img' : ``}
+                src={leftImg}
+                alt="leftChosenCard"
+              />
+            </div>
+            <div
+              className="game__vs__VS"
+              onClick={() => {
+                if (
+                  isNewRound &&
+                  leftChooseCard !== 0 &&
+                  rightChooseCard !== 0
+                ) {
+                  dispatch(pk());
+                  setIsVs(true);
+                }
+              }}
+            >
+              VS
+            </div>
+            <div>
+              <div>
+                {isVs && (
+                  <div className="game__vs__attack">
+                    -{left[leftChoose].attack}
+                  </div>
+                )}
+              </div>
+              <div>
+                {isVs && (
+                  <div className="game__vs__defense">
+                    +{right[rightChoose].defense}
+                  </div>
+                )}
+              </div>
+              <img src={rightImg} alt="rightChosenCard" />
+            </div>
+          </div>
+          <button
+            className="game__vs__next__btn"
+            onClick={() => {
+              if (isComputer === false) {
+                dispatch(nextRound());
+                setIsVs(false);
+              } else {
+                handleClick();
+                dispatch(nextRound());
+                dispatch(
+                  choose({
+                    side: 'right',
+                    card: chosenCard,
+                    pokemon: computer[chosenCard].pokemon,
+                  })
+                );
+                setIsVs(false);
+              }
+            }}
+          >
+            Next Round
+          </button>
+          <button
+            className="game__vs__again__btn"
+            onClick={() => {
+              dispatch(deleteGame());
+              dispatch(getCards('cardOne'));
+              dispatch(getCards('cardTwo'));
+              dispatch(getCards('cardThree'));
+              dispatch(getComputerCards('cardOne'));
+              dispatch(getComputerCards('cardTwo'));
+              dispatch(getComputerCards('cardThree'));
 
-          setIsVs(false);
-        }}
-      >
-        Play Again
-      </button>
+              setIsVs(false);
+            }}
+          >
+            Play Again
+          </button>
+        </div>
+      )}
     </div>
   );
 };

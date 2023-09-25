@@ -9,6 +9,7 @@ import { ShowAllPokemon } from './pages/showAllPokemon';
 import { SingleGame } from './pages/singleGame';
 import { useDispatch } from 'react-redux';
 import { changeLocation } from './features/routerLocationSlice';
+import { PokemonGame } from './pages/pokemonGame';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
             <Route path="/searchResult" element={<SearchResult />} />
             <Route path="/showAll" element={<ShowAllPokemon />} />
             <Route path="/singleGame" element={<SingleGame />} />
+            <Route path="/singleGame/pokemonGame" element={<PokemonGame />} />
           </Routes>
         </div>
       </div>
