@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RootState } from '../features/fetchDataSlice';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
 import { getCards } from '../features/playerOneSlice';
-import { nextRound } from '../features/gameSlice';
+
 import { getComputerCards } from '../features/computerSlice';
 import './singleGame.css';
 
@@ -15,7 +14,7 @@ export const SingleGame = () => {
   return (
     <div className="singleGame">
       <div className="singleGame__top">
-        <div>Game</div>
+        <div className="play__title">Choose Your Game Mode</div>
         <div>
           <button
             className="singleGame__top__btn"

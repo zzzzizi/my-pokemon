@@ -1,9 +1,14 @@
 .singleGame {
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: auto;
   flex-direction: column;
   width: 100%;
   height: calc(100vh - 75px);
+}
+.play__title {
+  font-size: 50px;
 }
 .singleGame__top {
   display: flex;

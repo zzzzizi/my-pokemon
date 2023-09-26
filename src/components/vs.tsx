@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../features/fetchDataSlice';
 import { choose, deleteGame, pk, Card } from '../features/gameSlice';
 import { useState } from 'react';
-import { nextRound } from '../features/gameSlice';
+import { nextRound, isSinglePlayer } from '../features/gameSlice';
 import { getCards } from '../features/playerOneSlice';
 import { getComputerCards } from '../features/computerSlice';
 import './vs.css';
@@ -36,27 +36,29 @@ export const Vs = () => {
     right.cardTwo.hp > 0 && cardNumber.push('cardTwo');
     right.cardThree.hp > 0 && cardNumber.push('cardThree');
     const randomNumber = Math.floor(Math.random() * cardNumber.length);
-    console.log(computer.cardOne.HP);
-    console.log(computer.cardThree.HP);
+
     chosenCard = cardNumber[randomNumber];
-    console.log(cardNumber);
-    console.log(chosenCard);
   };
 
   return (
     <div className="game__middle">
       {!isStart ? (
         <button
+          className="game__vs__start__btn"
           onClick={() => {
-            setIsStart(true);
-            handleClick();
-            dispatch(
-              choose({
-                side: 'right',
-                card: chosenCard,
-                pokemon: computer[chosenCard].pokemon,
-              })
-            );
+            if (isComputer === true) {
+              setIsStart(true);
+              handleClick();
+              dispatch(
+                choose({
+                  side: 'right',
+                  card: chosenCard,
+                  pokemon: computer[chosenCard].pokemon,
+                })
+              );
+            } else {
+              setIsStart(true);
+            }
           }}
         >
           Start
@@ -143,15 +145,29 @@ export const Vs = () => {
           <button
             className="game__vs__again__btn"
             onClick={() => {
-              dispatch(deleteGame());
-              dispatch(getCards('cardOne'));
-              dispatch(getCards('cardTwo'));
-              dispatch(getCards('cardThree'));
-              dispatch(getComputerCards('cardOne'));
-              dispatch(getComputerCards('cardTwo'));
-              dispatch(getComputerCards('cardThree'));
+              if (isComputer === false) {
+                dispatch(deleteGame());
+                dispatch(getCards('cardOne'));
+                dispatch(getCards('cardTwo'));
+                dispatch(getCards('cardThree'));
+                dispatch(getComputerCards('cardOne'));
+                dispatch(getComputerCards('cardTwo'));
+                dispatch(getComputerCards('cardThree'));
 
-              setIsVs(false);
+                setIsVs(false);
+                setIsStart(false);
+              } else {
+                dispatch(deleteGame());
+                dispatch(isSinglePlayer(true));
+                dispatch(getCards('cardOne'));
+                dispatch(getCards('cardTwo'));
+                dispatch(getCards('cardThree'));
+                dispatch(getComputerCards('cardOne'));
+                dispatch(getComputerCards('cardTwo'));
+                dispatch(getComputerCards('cardThree'));
+                setIsVs(false);
+                setIsStart(false);
+              }
             }}
           >
             Play Again
