@@ -10,23 +10,34 @@
   display: flex;
   height: calc(100vh - 75px);
 }
-.app__middle__side {
-  width: 80px;
-  background-color: lightcyan;
-}
-.app__middle__right {
-  width: calc(100% - 80px);
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  z-index: 1;
-}
-@media screen and (max-width: 370px) {
+
+@media screen and (max-width: 520px) {
   .app__middle__side {
-    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    z-index: 999;
+    background-color: lightcyan;
   }
   .app__middle__right {
     width: 100%;
+  }
+  .app__foot {
+    display: none;
+  }
+}
+@media screen and (min-width: 521px) {
+  .app__middle__side {
+    width: 80px;
+    background-color: lightcyan;
+  }
+  .app__middle__right {
+    width: calc(100% - 80px);
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    z-index: 1;
   }
 }
 .app__foot {

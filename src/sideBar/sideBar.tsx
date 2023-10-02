@@ -1,8 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import './sideBar.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteAllData, fetchAllPokemonData } from '../features/fetchAllSlice';
-import { RootState } from '../features/fetchDataSlice';
 
 export const SideBar = () => {
   const navigate = useNavigate();

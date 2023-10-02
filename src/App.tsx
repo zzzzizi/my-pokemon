@@ -39,7 +39,7 @@ function App() {
           </Routes>
         </div>
       </div>
-      <div className="app__foot">footer</div>
+      <div className="app__foot">Contact Me</div>
     </div>
   );
 }

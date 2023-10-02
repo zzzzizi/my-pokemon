@@ -3,10 +3,13 @@
   width: 100%;
   justify-content: space-between;
   overflow: auto;
-
   height: calc(100vh - 75px);
 }
-
+@media screen and (max-width: 520px) {
+  .game {
+    height: calc(100vh - 80px);
+  }
+}
 .game__cards {
   position: relative;
   z-index: 19;
