@@ -7,9 +7,7 @@
   width: 100%;
   height: calc(100vh - 75px);
 }
-.play__title {
-  font-size: 50px;
-}
+
 .singleGame__top {
   display: flex;
   flex-direction: column;
@@ -17,7 +15,11 @@
   align-items: center;
   font-size: 20px;
 }
+.play__title {
+  height: 120px;
+}
 .singleGame__top__btn {
+  margin-top: 30px;
   border: 2px solid;
   background-color: white;
   border-image: repeating-linear-gradient(
@@ -39,4 +41,20 @@
   color: #cc333f;
   transition: 0.3s, mask-size 0.3s 0.3s;
   cursor: pointer;
+}
+@media only screen and (max-width: 520px) {
+  .play__title {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 521px) {
+  .play__title {
+    font-size: 35px;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .play__title {
+    font-size: 50px;
+  }
 }

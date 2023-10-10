@@ -6,7 +6,7 @@ import { Home } from './pages/home';
 import { SearchResult } from './pages/searchResult';
 import { SideBar } from './sideBar/sideBar';
 import { ShowAllPokemon } from './pages/showAllPokemon';
-import { SingleGame } from './pages/singleGame';
+import { SingleGame } from './pages/game';
 import { useDispatch } from 'react-redux';
 import { changeLocation } from './features/routerLocationSlice';
 import { PokemonGame } from './pages/pokemonGame';

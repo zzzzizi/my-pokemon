@@ -5,58 +5,7 @@
   display: flex;
   justify-content: center;
 }
-@media only screen and (max-width: 450px) {
-  .card {
-    width: 320px;
-  }
-  .card__middle__attributes p {
-    font-size: 16px;
-  }
-  .card__middle__attributes div {
-    font-size: 13px;
-  }
-  .card__middle__img {
-    width: 160px;
-    height: 200px;
-    object-fit: cover;
-  }
-  .card__name {
-    font-size: 40px;
-  }
-  .card__middle__attributes {
-    width: calc(100% - 160px);
-  }
-  .card__bottom p {
-    margin-bottom: 12px;
-    font-size: 12px;
-  }
-}
-@media only screen and (min-width: 451px) {
-  .card {
-    width: 430px;
-  }
-  .card__middle__attributes p {
-    font-size: 18px;
-  }
-  .card__middle__attributes div {
-    font-size: 16px;
-  }
-  .card__middle__img {
-    width: 220px;
-    height: 230px;
-    object-fit: cover;
-  }
-  .card__name {
-    font-size: 53px;
-  }
-  .card__middle__attributes {
-    width: calc(100% - 220px);
-  }
-  .card__bottom p {
-    margin-bottom: 3px;
-    font-size: 15px;
-  }
-}
+
 .card {
   margin-top: 100px;
   border: solid 3px;
@@ -147,4 +96,56 @@
   font-size: 15px;
   font-weight: 500;
   opacity: 0.9;
+}
+@media only screen and (max-width: 450px) {
+  .card {
+    width: 320px;
+  }
+  .card__middle__attributes p {
+    font-size: 16px;
+  }
+  .card__middle__attributes div {
+    font-size: 13px;
+  }
+  .card__middle__img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .card__name {
+    font-size: 40px;
+  }
+  .card__middle__attributes {
+    width: calc(100% - 160px);
+  }
+  .card__bottom p {
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 451px) {
+  .card {
+    width: 430px;
+  }
+  .card__middle__attributes p {
+    font-size: 18px;
+  }
+  .card__middle__attributes div {
+    font-size: 16px;
+  }
+  .card__middle__img {
+    width: 220px;
+    height: 230px;
+    object-fit: cover;
+  }
+  .card__name {
+    font-size: 53px;
+  }
+  .card__middle__attributes {
+    width: calc(100% - 220px);
+  }
+  .card__bottom p {
+    margin-bottom: 3px;
+    font-size: 15px;
+  }
 }
