@@ -1,5 +1,4 @@
-import { useSelector } from 'react-redux';
-import { Pokemon, RootState } from '../features/fetchDataSlice';
+import { Pokemon } from '../features/fetchDataSlice';
 import './showCard.css';
 
 export const ShowCard = ({
