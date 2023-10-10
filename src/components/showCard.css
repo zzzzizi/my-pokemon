@@ -27,8 +27,8 @@
     width: calc(100% - 160px);
   }
   .card__bottom p {
-    margin-bottom: 10px;
-    font-size: 13px;
+    margin-bottom: 12px;
+    font-size: 12px;
   }
 }
 @media only screen and (min-width: 451px) {
