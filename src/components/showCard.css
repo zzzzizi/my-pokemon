@@ -4,11 +4,10 @@
   overflow: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 @media only screen and (max-width: 450px) {
   .card {
-    width: 350px;
+    width: 320px;
   }
   .card__middle__attributes p {
     font-size: 16px;
@@ -17,15 +16,15 @@
     font-size: 13px;
   }
   .card__middle__img {
-    width: 180px;
-    height: 210px;
+    width: 160px;
+    height: 200px;
     object-fit: cover;
   }
   .card__name {
     font-size: 40px;
   }
   .card__middle__attributes {
-    width: calc(100% - 180px);
+    width: calc(100% - 160px);
   }
   .card__bottom p {
     margin-bottom: 10px;
@@ -59,6 +58,7 @@
   }
 }
 .card {
+  margin-top: 100px;
   border: solid 3px;
   height: 490px;
   margin-top: 20px;
