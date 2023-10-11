@@ -102,7 +102,7 @@ export const Vs = () => {
             >
               VS
             </div>
-            <div>
+            <div className="game__vs__img__container">
               <div>
                 {isVs && (
                   <div className="game__vs__attack">
