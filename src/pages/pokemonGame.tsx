@@ -13,29 +13,29 @@ export const PokemonGame = () => {
     (state: RootState) => state.game.singlePlayer
   );
 
-  let isPlayerOneFailed = false;
+  let isLeftFailed = false;
   if (
     playerOneHp.cardOne.hp === 0 &&
     playerOneHp.cardTwo.hp === 0 &&
     playerOneHp.cardThree.hp === 0
   ) {
-    isPlayerOneFailed = true;
+    isLeftFailed = true;
   }
-  let isComputerFailed = false;
+  let isRightFailed = false;
   if (
     computerHp.cardOne.hp === 0 &&
     computerHp.cardTwo.hp === 0 &&
     computerHp.cardThree.hp === 0
   ) {
-    isComputerFailed = true;
+    isRightFailed = true;
   }
 
   return (
     <div className="game">
       <div className="game__cards">
         <div>
-          {isComputerFailed && <div className="game__win">You Win</div>}
-          {isPlayerOneFailed && <div className="game__failed">You Failed</div>}
+          {isRightFailed && <div className="game__win">You Win</div>}
+          {isLeftFailed && <div className="game__failed">You Failed</div>}
         </div>
         <PlayerOneCards
           cards={palyerOne}
@@ -44,11 +44,11 @@ export const PokemonGame = () => {
           isComputer={false}
         />
       </div>
-      <Vs />
+      <Vs isLeftFailed={isLeftFailed} isRightFailed={isRightFailed} />
       <div className="game__cards">
         <div>
-          {isPlayerOneFailed && <div className="game__win">You Win</div>}
-          {isComputerFailed && <div className="game__failed">You Failed</div>}
+          {isLeftFailed && <div className="game__win">You Win</div>}
+          {isRightFailed && <div className="game__failed">You Failed</div>}
         </div>
         <PlayerOneCards
           cards={computer}

@@ -70,6 +70,11 @@
     line-height: 76px;
   }
 }
+@media only screen and (min-width: 1350px) {
+  .game__vs__top {
+    flex-direction: row;
+  }
+}
 .game__vs {
   display: flex;
   flex-direction: column;
