@@ -43,26 +43,28 @@ export const Vs = () => {
   return (
     <div className="game__middle">
       {!isStart ? (
-        <button
-          className="game__vs__start__btn"
-          onClick={() => {
-            if (isComputer === true) {
-              setIsStart(true);
-              handleClick();
-              dispatch(
-                choose({
-                  side: 'right',
-                  card: chosenCard,
-                  pokemon: computer[chosenCard].pokemon,
-                })
-              );
-            } else {
-              setIsStart(true);
-            }
-          }}
-        >
-          Start
-        </button>
+        <div className="game__vs__start">
+          <button
+            className="game__vs__start__btn"
+            onClick={() => {
+              if (isComputer === true) {
+                setIsStart(true);
+                handleClick();
+                dispatch(
+                  choose({
+                    side: 'right',
+                    card: chosenCard,
+                    pokemon: computer[chosenCard].pokemon,
+                  })
+                );
+              } else {
+                setIsStart(true);
+              }
+            }}
+          >
+            Start
+          </button>
+        </div>
       ) : (
         <div className="game__vs">
           <div className="game__vs__top">
@@ -120,6 +122,17 @@ export const Vs = () => {
               <img src={rightImg} alt="rightChosenCard" />
             </div>
           </div>
+          <button
+            className="game__vs__battle__btn"
+            onClick={() => {
+              if (isNewRound && leftChooseCard !== 0 && rightChooseCard !== 0) {
+                dispatch(pk());
+                setIsVs(true);
+              }
+            }}
+          >
+            Battle
+          </button>
           <button
             className="game__vs__next__btn"
             onClick={() => {

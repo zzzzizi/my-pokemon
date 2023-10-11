@@ -1,10 +1,9 @@
 .game__middle {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 450px) {
   .game__vs__top {
     flex-direction: row;
   }
@@ -12,7 +11,7 @@
     width: 120px;
   }
 }
-@media only screen and (min-width: 751px) {
+@media only screen and (min-width: 451px) {
   .game__vs__top {
     flex-direction: column;
   }
@@ -33,9 +32,14 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+.game__vs__start {
+  height: calc(100% - 75px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .game__vs__start__btn,
 game__vs__start__btn::after {
-  margin-bottom: 80px;
   width: 150px;
   height: 76px;
   line-height: 78px;
@@ -153,6 +157,56 @@ game__vs__start__btn::after {
   );
   color: transparent;
   background-clip: text;
+}
+.game__vs__battle__btn,
+game__vs__battle__btn::after {
+  width: 150px;
+  height: 76px;
+  line-height: 78px;
+  font-size: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px #00e6f6;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  touch-action: manipulation;
+}
+.game__vs__battle__btn::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+
+  content: 'B A T T L E';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    #00e6f6 3%,
+    #00e6f6 5%,
+    #ff013c 5%
+  );
+  text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+  clip-path: var(--slice-0);
+}
+
+.game__vs__battle__btn:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+.game__vs__battle__btn:hover {
+  cursor: pointer;
 }
 .game__vs__next__btn,
 game__vs__next__btn::after {
