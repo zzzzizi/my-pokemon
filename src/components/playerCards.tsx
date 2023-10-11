@@ -31,7 +31,7 @@ export const PlayerOneCards = ({
   }
 
   return (
-    <div>
+    <div className="player__cards">
       <div style={{ filter: hp.cardOne.hp === 0 ? 'grayscale(0.8)' : '' }}>
         <div
           onClick={() => {

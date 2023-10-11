@@ -3,12 +3,12 @@ import './showCard.css';
 
 export const ShowCard = ({
   pokemonData,
-  playerCardContainer,
+
   playerCard,
   showCardStyle,
 }: {
   playerCard?: string;
-  playerCardContainer?: string;
+
   showCardStyle?: string;
   pokemonData: Pokemon;
 }) => {

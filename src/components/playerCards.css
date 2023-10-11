@@ -114,3 +114,20 @@
   justify-content: center;
   align-items: center;
 }
+@media only screen and (max-width: 750px) {
+  .player__cards {
+    display: flex;
+  }
+  .player__card__container {
+    width: 130px;
+  }
+  .player__card {
+    width: 130px;
+  }
+  .player__card__bottom {
+    display: none;
+  }
+  .player__hp__container {
+    width: 120px;
+  }
+}

@@ -6,7 +6,7 @@ import { Home } from './pages/home';
 import { SearchResult } from './pages/searchResult';
 import { SideBar } from './sideBar/sideBar';
 import { ShowAllPokemon } from './pages/showAllPokemon';
-import { SingleGame } from './pages/game';
+import { Game } from './pages/game';
 import { useDispatch } from 'react-redux';
 import { changeLocation } from './features/routerLocationSlice';
 import { PokemonGame } from './pages/pokemonGame';
@@ -34,8 +34,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/searchResult" element={<SearchResult />} />
             <Route path="/showAll" element={<ShowAllPokemon />} />
-            <Route path="/singleGame" element={<SingleGame />} />
-            <Route path="/singleGame/pokemonGame" element={<PokemonGame />} />
+            <Route path="/game" element={<Game />} />
+            <Route path="/game/pokemonGame" element={<PokemonGame />} />
           </Routes>
         </div>
       </div>

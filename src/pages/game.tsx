@@ -7,7 +7,7 @@ import { getComputerCards } from '../features/computerSlice';
 import './game.css';
 
 import { isSinglePlayer } from '../features/gameSlice';
-export const SingleGame = () => {
+export const Game = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ export const SingleGame = () => {
               dispatch(getComputerCards('cardThree'));
               dispatch(isSinglePlayer(true));
 
-              navigate('/singleGame/pokemonGame');
+              navigate('/game/pokemonGame');
             }}
           >
             Single Player
@@ -47,7 +47,7 @@ export const SingleGame = () => {
               dispatch(getComputerCards('cardThree'));
               dispatch(isSinglePlayer(false));
 
-              navigate('/singleGame/pokemonGame');
+              navigate('/game/pokemonGame');
             }}
           >
             Double Players

@@ -23,7 +23,7 @@ export const SideBar = () => {
       </div>
       <div
         onClick={() => {
-          navigate('/singleGame');
+          navigate('/game');
         }}
       >
         Game

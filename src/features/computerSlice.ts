@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AjaxError, ajax } from 'rxjs/ajax';
+import { AjaxError } from 'rxjs/ajax';
 import { Pokemon } from './fetchDataSlice';
 
 export type CardNumber = 'cardOne' | 'cardTwo' | 'cardThree';

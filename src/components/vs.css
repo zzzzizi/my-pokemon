@@ -4,15 +4,32 @@
   justify-content: center;
   align-items: center;
 }
+@media only screen and (max-width: 750px) {
+  .game__vs__top {
+    flex-direction: row;
+  }
+  .game__vs img {
+    width: 120px;
+  }
+}
+@media only screen and (min-width: 751px) {
+  .game__vs__top {
+    flex-direction: column;
+  }
+  .game__vs img {
+    width: 150px;
+  }
+}
 .game__vs {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.game__vs img {
+.game__vs__img__container {
   position: relative;
-  width: 150px;
+}
+.game__vs img {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -72,13 +89,8 @@ game__vs__start__btn::after {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 60px;
 }
-@media screen and (max-width: 1342px) {
-  .game__vs__top {
-    flex-direction: column;
-  }
-}
+
 .game__vs__left__img {
   transform: scaleX(-1);
 }
