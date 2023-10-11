@@ -21,7 +21,7 @@
   border: solid red 2px;
   padding-left: 15px;
   padding-right: 15px;
-  margin-top: 300px;
+
   transform: rotate(-25deg);
   z-index: 20;
 }
@@ -32,7 +32,6 @@
   border: solid green 2px;
   padding-left: 15px;
   padding-right: 15px;
-  margin-top: 300px;
   transform: rotate(-25deg);
   z-index: 20;
 }
@@ -44,5 +43,21 @@
     justify-content: space-between;
     overflow: auto;
     height: calc(100vh - 75px);
+  }
+  .game__failed {
+    left: 15px;
+    top: 70px;
+  }
+  .game__win {
+    left: 15px;
+    top: 70px;
+  }
+}
+@media only screen and (min-width: 751px) {
+  .game__failed {
+    top: 300px;
+  }
+  .game__win {
+    top: 300px;
   }
 }
