@@ -16,7 +16,6 @@
 }
 .game__failed {
   position: absolute;
-  font-size: 80px;
   color: red;
   border: solid red 2px;
   padding-left: 15px;
@@ -27,7 +26,6 @@
 }
 .game__win {
   position: absolute;
-  font-size: 80px;
   color: green;
   border: solid green 2px;
   padding-left: 15px;
@@ -45,19 +43,23 @@
     height: calc(100vh - 75px);
   }
   .game__failed {
-    left: 15px;
+    font-size: 60px;
+    left: 40px;
     top: 70px;
   }
   .game__win {
-    left: 15px;
+    font-size: 60px;
+    left: 50px;
     top: 70px;
   }
 }
 @media only screen and (min-width: 751px) {
   .game__failed {
+    font-size: 80px;
     top: 300px;
   }
   .game__win {
+    font-size: 80px;
     top: 300px;
   }
 }
