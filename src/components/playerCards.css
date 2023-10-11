@@ -122,11 +122,11 @@
   .player__card__container {
     width: 120px;
     margin-left: 2px;
-    height: 170px;
+    height: 160px;
   }
   .player__card {
     width: 120px;
-    height: 170px;
+    height: 160px;
   }
   .player__card__name {
     margin-top: 10px;
