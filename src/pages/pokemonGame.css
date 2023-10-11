@@ -40,7 +40,7 @@
     width: 100%;
     justify-content: space-between;
     overflow: auto;
-    height: calc(100vh - 75px);
+    /* height: calc(100vh - 75px); */
   }
   .game__failed {
     font-size: 60px;
