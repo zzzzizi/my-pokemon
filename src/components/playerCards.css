@@ -117,17 +117,27 @@
 @media only screen and (max-width: 750px) {
   .player__cards {
     display: flex;
+    justify-content: center;
   }
   .player__card__container {
-    width: 130px;
+    width: 120px;
+    margin-left: 2px;
   }
   .player__card {
-    width: 130px;
+    width: 120px;
+  }
+  .player__card__name {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  .player__card__middle__img {
+    height: 125px;
+    width: 120px;
   }
   .player__card__bottom {
     display: none;
   }
   .player__hp__container {
-    width: 120px;
+    width: 110px;
   }
 }
