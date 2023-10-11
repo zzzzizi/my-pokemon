@@ -122,69 +122,75 @@ export const Vs = () => {
               <img src={rightImg} alt="rightChosenCard" />
             </div>
           </div>
-          <button
-            className="game__vs__battle__btn"
-            onClick={() => {
-              if (isNewRound && leftChooseCard !== 0 && rightChooseCard !== 0) {
-                dispatch(pk());
-                setIsVs(true);
-              }
-            }}
-          >
-            Battle
-          </button>
-          <button
-            className="game__vs__next__btn"
-            onClick={() => {
-              if (isComputer === false) {
-                dispatch(nextRound());
-                setIsVs(false);
-              } else {
-                handleClick();
-                dispatch(nextRound());
-                dispatch(
-                  choose({
-                    side: 'right',
-                    card: chosenCard,
-                    pokemon: computer[chosenCard].pokemon,
-                  })
-                );
-                setIsVs(false);
-              }
-            }}
-          >
-            Next Round
-          </button>
-          <button
-            className="game__vs__again__btn"
-            onClick={() => {
-              if (isComputer === false) {
-                dispatch(deleteGame());
-                dispatch(getCards('cardOne'));
-                dispatch(getCards('cardTwo'));
-                dispatch(getCards('cardThree'));
-                dispatch(getComputerCards('cardOne'));
-                dispatch(getComputerCards('cardTwo'));
-                dispatch(getComputerCards('cardThree'));
+          <div className="game__vs__button__container">
+            <button
+              className="game__vs__battle__btn"
+              onClick={() => {
+                if (
+                  isNewRound &&
+                  leftChooseCard !== 0 &&
+                  rightChooseCard !== 0
+                ) {
+                  dispatch(pk());
+                  setIsVs(true);
+                }
+              }}
+            >
+              Battle
+            </button>
+            <button
+              className="game__vs__next__btn"
+              onClick={() => {
+                if (isComputer === false) {
+                  dispatch(nextRound());
+                  setIsVs(false);
+                } else {
+                  handleClick();
+                  dispatch(nextRound());
+                  dispatch(
+                    choose({
+                      side: 'right',
+                      card: chosenCard,
+                      pokemon: computer[chosenCard].pokemon,
+                    })
+                  );
+                  setIsVs(false);
+                }
+              }}
+            >
+              Next Round
+            </button>
+            <button
+              className="game__vs__again__btn"
+              onClick={() => {
+                if (isComputer === false) {
+                  dispatch(deleteGame());
+                  dispatch(getCards('cardOne'));
+                  dispatch(getCards('cardTwo'));
+                  dispatch(getCards('cardThree'));
+                  dispatch(getComputerCards('cardOne'));
+                  dispatch(getComputerCards('cardTwo'));
+                  dispatch(getComputerCards('cardThree'));
 
-                setIsVs(false);
-                setIsStart(false);
-              } else {
-                dispatch(deleteGame());
-                dispatch(isSinglePlayer(true));
-                dispatch(getCards('cardOne'));
-                dispatch(getCards('cardTwo'));
-                dispatch(getCards('cardThree'));
-                dispatch(getComputerCards('cardOne'));
-                dispatch(getComputerCards('cardTwo'));
-                dispatch(getComputerCards('cardThree'));
-                setIsVs(false);
-                setIsStart(false);
-              }
-            }}
-          >
-            Play Again
-          </button>
+                  setIsVs(false);
+                  setIsStart(false);
+                } else {
+                  dispatch(deleteGame());
+                  dispatch(isSinglePlayer(true));
+                  dispatch(getCards('cardOne'));
+                  dispatch(getCards('cardTwo'));
+                  dispatch(getCards('cardThree'));
+                  dispatch(getComputerCards('cardOne'));
+                  dispatch(getComputerCards('cardTwo'));
+                  dispatch(getComputerCards('cardThree'));
+                  setIsVs(false);
+                  setIsStart(false);
+                }
+              }}
+            >
+              Play Again
+            </button>
+          </div>
         </div>
       )}
     </div>
