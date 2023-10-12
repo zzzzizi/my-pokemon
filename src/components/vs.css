@@ -40,6 +40,7 @@
 }
 @media only screen and (min-width: 451px) {
   .game__vs__top {
+    margin-top: 50px;
     flex-direction: column;
   }
   .game__vs img {
@@ -70,8 +71,9 @@
     line-height: 76px;
   }
 }
-@media only screen and (min-width: 1350px) {
+@media only screen and (min-width: 1400px) {
   .game__vs__top {
+    margin-top: 100px;
     flex-direction: row;
   }
 }
